@@ -1,6 +1,6 @@
 # based on https://hub.docker.com/r/mliszcz/tango-cs/~/dockerfile/
 
-FROM buzmakov/tango-cs:stable
+FROM ubuntu:bionic
 
 MAINTAINER Alexey Buzmakov
 
@@ -38,14 +38,8 @@ RUN python setup.py build_ext
 
 WORKDIR /var/www/drivers/tango_ds
 
+# EXPOSE 10000
 
-EXPOSE 10000
-
-
-CMD service mysql start && \
-    service tango-db start && \
-    service tango-starter start && \
-    service tango-accesscontrol start && \
-    ./add_to_db.py && \
+CMD ./add_to_db.py && \
     supervisord -n
  
