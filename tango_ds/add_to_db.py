@@ -2,7 +2,6 @@
 
 from PyTango import Database, DbDevInfo
 
-
 def register(device_name, device_class, device_server):
     new_device_info = DbDevInfo()
     new_device_info.name = device_name

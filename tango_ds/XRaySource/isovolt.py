@@ -1,4 +1,6 @@
+from __future__ import print_function
 import serial
+from time import sleep
 
 def read_com_string():
 	# read symbols until \r in stream
@@ -13,19 +15,19 @@ def read_com_string():
 
 def read_error():
 	ser.write('ER\n')
-	print 'ERROR:', read_com_string()
+	print('ERROR:', read_com_string())
 
 ser = serial.Serial('/dev/ttyUSB0')
 
-ser.open()
+ser.isOpen()
 
 # get id
 ser.write('ID\n')
 
-print 'ID:', read_com_string()
+print('ID:', read_com_string())
 
 ser.write("XT\n")
-print 'Tube:', read_com_string()
+print('Tube:', read_com_string())
 
 read_error()
 # # testing warming
@@ -34,22 +36,26 @@ read_error()
 
 # hight votage ON
 ser.write("HV:1\n")
-
+read_error()
+sleep(1)
 # get current state
 ser.write("SV:020000\n") # 20 keV
+read_error()
+sleep(1)
 
 ser.write("VA\n")
-print "VA = ", read_com_string()
+print("VA = ", read_com_string())
 
 ser.write("SC:010000\n") # 10 mA
+sleep(1)
 
 ser.write("CA\n")
-print "CA = ", read_com_string()
-
+print("CA = ", read_com_string())
 
 read_error()
 
 # hight votage OFF
 ser.write("HV:0\n")
+read_error()
 
 ser.close()
