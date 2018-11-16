@@ -3,6 +3,7 @@ services:
   tango-db:
     image: tangocs/mysql:9.2.2
     container_name: tango-db
+    restart: unless-stopped
     ports:
      - "9999:3306"
     environment:
@@ -10,6 +11,7 @@ services:
   tango-cs:
     image: tangocs/tango-cs:9
     container_name: tango-cs
+    restart: unless-stopped
     ports:
      - "10000:10000"
     environment:

@@ -40,6 +40,6 @@ WORKDIR /var/www/drivers/tango_ds
 
 # EXPOSE 10000
 
-CMD ./add_to_db.py && \
-    supervisord -n
+CMD  chmod  a+x wait-for-it.sh && ./wait-for-it.sh $TANGO_HOST --timeout=30 --strict -- python add_to_db.py && \
+   supervisord -n
  
