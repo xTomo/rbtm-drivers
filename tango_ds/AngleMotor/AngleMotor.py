@@ -68,7 +68,7 @@ class AngleMotor (PyTango.Device_4Impl):
     #----- PROTECTED REGION ID(AngleMotor.global_variables) ENABLED START -----#
 
     CONFIG_PATH = 'tango_ds.cfg'
-    STEPS_IN_360 = 32300 # steps in 360 degrees
+    STEPS_IN_360 = 32400 # steps in 360 degrees
     STEPS_IN_DEGREE = STEPS_IN_360 / 360.
 
     def get_port_from_config(self):
