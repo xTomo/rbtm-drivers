@@ -1,4 +1,4 @@
-import serial
+# import serial
 import PyTango
 
 
@@ -18,103 +18,122 @@ class Source(object):
         self.tty_name = tty_name
 
     def on_high_voltage(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("HV:1\n")
-            error = self._get_error(serial_port)  
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("HV:1\n")
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.on_high_voltage()")
         
     def off_high_voltage(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("HV:0\n")
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("HV:0\n")
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.off_high_voltage()")
 
     def is_on_high_volatge(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("SR:01\n")
-            answer = self.get_data_string(serial_port)
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("SR:01\n")
+        #     answer = self.get_data_string(serial_port)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.is_on_high_voltage()")
-        return self.get_number(answer) & 64 != 0
+        # return self.get_number(answer) & 64 != 0
+        return 1
 
     def get_nominal_voltage(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("VN\n")
-            answer = self.get_data_string(serial_port)
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("VN\n")
+        #     answer = self.get_data_string(serial_port)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.get_nominal_voltage()")
-        return self.get_number(answer) / 100
+        # return self.get_number(answer) / 100
+        return 40
 
     def get_actual_voltage(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("VA\n")
-            answer = self.get_data_string(serial_port)
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("VA\n")
+        #     answer = self.get_data_string(serial_port)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.get_actual_voltage()")
-        return self.get_number(answer) / 100
+        # return self.get_number(answer) / 100
+        return 40
 
     def get_nominal_current(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("CN\n")
-            answer = self.get_data_string(serial_port)
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("CN\n")
+        #     answer = self.get_data_string(serial_port)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.get_nominal_current()")
-        return self.get_number(answer) / 100
+        # return self.get_number(answer) / 100
+        return 20
 
     def get_actual_current(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("CA\n")
-            answer = self.get_data_string(serial_port)
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("CA\n")
+        #     answer = self.get_data_string(serial_port)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.get_actual_current()")
-        return self.get_number(answer) / 100
+        # return self.get_number(answer) / 100
+        return 20
 
     def set_voltage(self, voltage):
-        command = "SV:" + str(voltage*100).zfill(6) + "\n"
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write(command)
-            error = self._get_error(serial_port)
+        # command = "SV:" + str(voltage*100).zfill(6) + "\n"
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write(command)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.set_voltage()")
 
     def set_current(self, current):
-        command = "SC:" + str(current*100).zfill(6) + "\n"
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write(command)
-            error = self._get_error(serial_port)
+        # command = "SC:" + str(current*100).zfill(6) + "\n"
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write(command)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.set_current()")
 
     def get_id(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("ID\n")
-            answer = self.get_data_string(serial_port)
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("ID\n")
+        #     answer = self.get_data_string(serial_port)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.get_id()")
-        return answer 
+        # return answer
+        return 'Isovolt 3003 - Mock 40/20'
 
     def get_tube_name(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            serial_port.write("XT\n")
-            answer = self.get_data_string(serial_port)
-            error = self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     serial_port.write("XT\n")
+        #     answer = self.get_data_string(serial_port)
+        #     error = self._get_error(serial_port)
+        error = None
         handle_error(error, "Source.get_tube_name()")
-        return answer
+        # return answer
+        return 'Mock tube'
 
     def get_error(self):
-        with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
-            return self._get_error(serial_port)
+        # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
+        #     return self._get_error(serial_port)
+        return None
 
-    def _get_error(self, serial_port):
-        serial_port.write("SR:12\n")
-        answer = self.get_data_string(serial_port)
-        error_code = int(answer[1:-1])
-
-        if error_code != 0:
-            serial_port.write("ER\n")
-            error_line = self.get_data_string(serial_port)
-            print(error_line)
-            return (ord(error_line[0]), error_line[2:])
-        else:
-            return None
+    # def _get_error(self, serial_port):
+    #     serial_port.write("SR:12\n")
+    #     answer = self.get_data_string(serial_port)
+    #     error_code = int(answer[1:-1])
+    #
+    #     if error_code != 0:
+    #         serial_port.write("ER\n")
+    #         error_line = self.get_data_string(serial_port)
+    #         print(error_line)
+    #         return (ord(error_line[0]), error_line[2:])
+    #     else:
+    #         return None
 
 
     # def start_warming_up(self, interval, test_voltage):
