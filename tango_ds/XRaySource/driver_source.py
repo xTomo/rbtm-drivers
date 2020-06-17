@@ -49,7 +49,7 @@ class Source(object):
         error = None
         handle_error(error, "Source.get_nominal_voltage()")
         # return self.get_number(answer) / 100
-        return 40
+        return 400
 
     def get_actual_voltage(self):
         # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
@@ -59,7 +59,7 @@ class Source(object):
         error = None
         handle_error(error, "Source.get_actual_voltage()")
         # return self.get_number(answer) / 100
-        return 40
+        return 400
 
     def get_nominal_current(self):
         # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
@@ -69,7 +69,7 @@ class Source(object):
         error = None
         handle_error(error, "Source.get_nominal_current()")
         # return self.get_number(answer) / 100
-        return 20
+        return 200
 
     def get_actual_current(self):
         # with serial.Serial(self.tty_name, timeout=TIMEOUT) as serial_port:
@@ -79,7 +79,7 @@ class Source(object):
         error = None
         handle_error(error, "Source.get_actual_current()")
         # return self.get_number(answer) / 100
-        return 20
+        return 200
 
     def set_voltage(self, voltage):
         # command = "SV:" + str(voltage*100).zfill(6) + "\n"
